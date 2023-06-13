@@ -11,11 +11,12 @@
             hsl(203deg 100% 75%) 80%,
             hsl(202deg 84% 83%) 90%,
             hsl(200deg 53% 90%) 100%);
+    --base-font-size: 18px;
 
     --calculator-background: #aaa;
 
     --screen-background: #eee;
-    --screen-height: 132px;
+    --screen-height: 110px;
 
     --button-spacing: 12px;
     --button-base-width: 60px;
@@ -24,7 +25,8 @@
 }
 
 body {
-    background-image: var(--background)
+    background-image: var(--background);
+    font-size: var(--base-font-size);
 }
 
 #calculator {
@@ -41,6 +43,9 @@ body {
     justify-content: flex-end;
     background-color: var(--screen-background);
     margin-bottom: var(--button-spacing);
+    font-size: 36px;
+    padding: 8px 16px;
+    line-height: 1;
 }
 
 #buttons {
@@ -70,6 +75,15 @@ body {
         -20px -20px 60px #ffffff;
 }
 
+#buttons button:focus,
+#buttons button:focus-visible {
+    outline: 0;
+}
+
 #buttons button[data-value="0"] {
     grid-column-end: span 2;
+}
+
+#buttons button[data-value="AC"] {
+    grid-column-end: span 3;
 }

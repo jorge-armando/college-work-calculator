@@ -12,7 +12,7 @@
             hsl(203deg 100% 75%) 80%,
             hsl(202deg 84% 83%) 90%,
             hsl(200deg 53% 90%) 100%);
-    
+
     --calculator-background: #aaa;
 
     --display-fontColor: #000;
@@ -26,8 +26,39 @@
     --button-radius: 12px;
 }
 
+.mono {
+    --global-background: #e0b1cb;
+
+    --calculator-background: #5e548e;
+
+    --display-fontColor: #fff;
+    --display-fontColor--result: #231942;
+    --display-background: #9f86c0;
+
+    --button-background: #e0b1cb;
+    --button-background--active: #9f86c0;
+}
+
+.mono2 {
+    --base-fontSize: 28px;
+
+    /* 1 */
+    --global-background: #e0e1dd;
+
+    /* 5 */
+    --calculator-background: #0d1b2a;
+
+    --display-fontColor: #fff;
+    --display-fontColor--result: #778da9;
+    --display-background: #1b263b;
+
+    --button-background: #e0e1dd;
+    --button-background--active: #778da9;
+    --button-radius: 0;
+}
+
 body {
-    background-image: var(--global-background);
+    background: var(--global-background);
     font-size: var(--base-fontSize);
 }
 
@@ -38,6 +69,7 @@ body {
 }
 
 #display {
+    max-width: calc((var(--button-width) * 4) + (var(--button-spacing) * 3));
     color: var(--display-fontColor);
     height: var(--display-height);
     text-align: right;
@@ -49,6 +81,8 @@ body {
     font-size: 36px;
     padding: 8px 16px;
     line-height: 1;
+    box-shadow: inset 20px 20px 60px rgba(0, 0, 0 , 0.4),
+            inset -20px -20px 60px rgba(255, 255, 255 , 0.1);
 }
 
 #display.result {
@@ -58,7 +92,7 @@ body {
 #buttons {
     user-select: none;
     display: grid;
-    grid-template-columns: repeat(4, minmax(var(--button-width), 1fr));
+    grid-template-columns: repeat(4, var(--button-width));
     grid-auto-rows: var(--button-height);
     gap: var(--button-spacing);
 }
@@ -71,16 +105,12 @@ body {
     align-items: center;
     border-radius: var(--button-radius);
 
-    background: #e0e0e0;
-    box-shadow: 20px 20px 60px #bebebe,
-        -20px -20px 60px #ffffff;
+    background: var(--button-background);
 }
 
 #buttons button:active,
 #buttons button.active {
-    background: linear-gradient(145deg, #cacaca, #f0f0f0);
-    box-shadow: 20px 20px 60px #bebebe,
-        -20px -20px 60px #ffffff;
+    background: linear-gradient(145deg, var(--button-background--active), var(--button-background));
 }
 
 #buttons button:focus,
@@ -94,4 +124,13 @@ body {
 
 #buttons button[data-value="AC"] {
     grid-column-end: span 3;
+}
+
+.messages {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: var(--calculator-background);
+    padding: 5px 10px;
+    font-size: 15px;
 }

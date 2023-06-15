@@ -1,5 +1,6 @@
 :root {
-    --background: linear-gradient(35deg,
+    --base-fontSize: 18px;
+    --global-background: linear-gradient(35deg,
             hsl(240deg 100% 50%) 0%,
             hsl(225deg 100% 50%) 10%,
             hsl(218deg 100% 50%) 20%,
@@ -11,22 +12,23 @@
             hsl(203deg 100% 75%) 80%,
             hsl(202deg 84% 83%) 90%,
             hsl(200deg 53% 90%) 100%);
-    --base-font-size: 18px;
-
+    
     --calculator-background: #aaa;
 
-    --screen-background: #eee;
-    --screen-height: 110px;
+    --display-fontColor: #000;
+    --display-fontColor--result: red;
+    --display-background: #eee;
+    --display-height: 110px;
 
     --button-spacing: 12px;
-    --button-base-width: 60px;
-    --button-base-height: 60px;
+    --button-width: 60px;
+    --button-height: 60px;
     --button-radius: 12px;
 }
 
 body {
-    background-image: var(--background);
-    font-size: var(--base-font-size);
+    background-image: var(--global-background);
+    font-size: var(--base-fontSize);
 }
 
 #calculator {
@@ -36,23 +38,28 @@ body {
 }
 
 #display {
-    height: var(--screen-height);
+    color: var(--display-fontColor);
+    height: var(--display-height);
     text-align: right;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    background-color: var(--screen-background);
+    background-color: var(--display-background);
     margin-bottom: var(--button-spacing);
     font-size: 36px;
     padding: 8px 16px;
     line-height: 1;
 }
 
+#display.result {
+    color: var(--display-fontColor--result);
+}
+
 #buttons {
     user-select: none;
     display: grid;
-    grid-template-columns: repeat(4, minmax(var(--button-base-width), 1fr));
-    grid-auto-rows: var(--button-base-height);
+    grid-template-columns: repeat(4, minmax(var(--button-width), 1fr));
+    grid-auto-rows: var(--button-height);
     gap: var(--button-spacing);
 }
 
@@ -69,7 +76,8 @@ body {
         -20px -20px 60px #ffffff;
 }
 
-#buttons button:active {
+#buttons button:active,
+#buttons button.active {
     background: linear-gradient(145deg, #cacaca, #f0f0f0);
     box-shadow: 20px 20px 60px #bebebe,
         -20px -20px 60px #ffffff;

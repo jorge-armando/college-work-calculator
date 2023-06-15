@@ -131,6 +131,10 @@ class Calculator {
       event.preventDefault();
       event.stopPropagation();
 
+      if (event.key == "p") {
+        document.querySelector("body").classList.add("clean");
+      }
+
       const key = this.getKeyFromKeyboard(event.key);
       const $button = document.querySelector(`button[data-value="${key}"]`);
 

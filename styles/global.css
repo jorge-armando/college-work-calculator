@@ -22,4 +22,5 @@ button {
     border: 0;
     color: currentColor;
     font-size: inherit;
+    font-weight: inherit;
 }

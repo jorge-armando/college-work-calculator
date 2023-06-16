@@ -1,4 +1,0 @@
-let calculatorTheme = {
-  original: {},
-  instagram: {},
-};

@@ -29,7 +29,7 @@ class Display {
   value = "";
 
   constructor() {
-    this.displayElement = document.getElementById("display");
+    this.displayElement = document.querySelector("#display p");
 
     const displayValue = this.displayElement.innerText;
     this.value = displayValue.split(/([+\-*\/])/).filter(Boolean);
@@ -91,18 +91,19 @@ class Display {
   write() {
     this.displayElement.classList.remove("result");
     this.displayElement.innerText = this.value.join("");
+    this.displayElement.scrollTop = this.displayElement.scrollHeight;
   }
 
   writeAsResult() {
     this.displayElement.classList.add("result");
     this.displayElement.innerText = this.value.join("");
+    this.displayElement.scrollTop = this.displayElement.scrollHeight;
   }
 }
 
 class Calculator {
   clearOnNextUse = false;
   display = new Display();
-  currentTheme = calculatorTheme.original;
 
   constructor() {
     this.display = new Display();
@@ -130,10 +131,6 @@ class Calculator {
     document.addEventListener("keyup", (event) => {
       event.preventDefault();
       event.stopPropagation();
-
-      if (event.key == "p") {
-        document.querySelector("body").classList.add("clean");
-      }
 
       const key = this.getKeyFromKeyboard(event.key);
       const $button = document.querySelector(`button[data-value="${key}"]`);
@@ -190,8 +187,9 @@ class Calculator {
         return;
       }
       const value = this.display.getValueString();
-      const solved = eval(value);
+      let solved = eval(value);
       if (isFinite(solved)) {
+        solved = parseFloat(solved.toFixed(5));
         this.display.setValue([solved]).writeAsResult();
       } else {
         this.display.setValue([caractere.error]).writeAsResult();

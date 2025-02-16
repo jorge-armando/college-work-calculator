@@ -4,6 +4,19 @@
     padding: 0;
 }
 
+*::-webkit-scrollbar {
+    width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    box-shadow: none;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 2px;
+}
+
 html {
     font-family: sans-serif;
     font-weight: 400;
@@ -11,9 +24,6 @@ html {
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 
@@ -23,4 +33,9 @@ button {
     color: currentColor;
     font-size: inherit;
     font-weight: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
 }

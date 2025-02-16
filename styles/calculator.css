@@ -3,6 +3,18 @@ body {
     font-size: 28px;
 }
 
+#screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#screen > div {
+    margin: 24px;
+}
+
+/* Calculator */
 #calculator {
     box-shadow: 0.375rem 0.375rem 1.875rem rgba(0, 0, 0, 0.2);
     border-radius: 0.5rem;
@@ -88,18 +100,69 @@ body {
     grid-column-end: span 3;
 }
 
-.messages {
+/* History */
+#history {
+    width: 360px;
+    box-shadow: 0.375rem 0.375rem 1.875rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    border-top: 0.0625rem solid rgba(255, 255, 255, 0.2);
+    border-left: 0.0625rem solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    height: 617px;
+    display: flex;
+    flex-direction: column;
+}
+
+#history .title {
+    text-align: center;
+    padding: 16px 0;
+    flex: 0 0 auto;
+}
+
+#history .content {
+    flex: 1;
+    overflow-y: auto;
+    font-size: 22px;
+}
+
+#history .content button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#history .content button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+#history .clear-history {
+    display: block;
+    width: 100%;
+    padding: 12px;
+}
+
+#history .clear-history:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Messages */
+#messages {
     position: fixed;
     bottom: 0;
     right: 0;
     padding: 8px 10px;
-    font-size: 16px;
+    font-size: 20px;
     color: #fff;
     box-shadow: 0.375rem 0.375rem 1.875rem rgba(0, 0, 0, 0.2);
     border-top: 0.0625rem solid rgba(255, 255, 255, 0.2);
     border-left: 0.0625rem solid rgba(255, 255, 255, 0.2);
 }
 
-.messages p:not(:last-child) {
+#messages p:not(:last-child) {
     margin-bottom: 6px;
 }
